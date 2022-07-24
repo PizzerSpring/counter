@@ -1,0 +1,40 @@
+.count {
+    font-size: 80px;
+    font-weight: bold;
+    font-family: "Comic Sans";
+    color: #006064;
+    margin-top: 10px;
+}
+
+.button {
+    font-size: 32px;
+    font-family: "Comic Sans";
+    text-transform: uppercase;
+    background: #5DC8CD;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    display: inline-block;
+}
+
+.active {
+    font-family: "Comic Sans";
+    margin: 10px 0 10px 0;
+}
+
+.buttonReset {
+    display: inline-block;
+    margin: 0 -30px 0 20px;
+}
+
+.error {
+    font-family: "Comic Sans";
+    color: #333333;
+    margin: 10px 0 10px 0;
+}
+
+.inactiveCount {
+    color: #01939A;
+    text-shadow: #006064  2px 2px;
+}
+

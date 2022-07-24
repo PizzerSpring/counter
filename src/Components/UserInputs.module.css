@@ -1,0 +1,51 @@
+.input {
+    font-family: "Comic Sans";
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: #FFB473;
+    color: #006064;
+    border: none;
+    padding: 5px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.inputMax {
+    display: inline-block;
+}
+
+.text {
+    font-family: "Comic Sans";
+    text-transform: uppercase;
+
+}
+
+.textMax {
+    padding: 0 10px 0 15px;
+    text-shadow: #A64D00 2px 3px;
+}
+
+.textStart {
+    padding: 0 10px 0 15px;
+    text-shadow: #A64D00 2px 3px;
+}
+
+.button {
+    font-size: 32px;
+    font-family: "Comic Sans";
+    text-transform: uppercase;
+    background: #5DC8CD;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    margin-bottom: 30px;
+}
