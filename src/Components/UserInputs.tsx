@@ -18,54 +18,12 @@ type UserInputsPropsType = {
 
 const UserInputs = (props: UserInputsPropsType) => {
     const [disSet, setDisSet] = useState(false);
-    useEffect(() => {
-        const sValue = localStorage.getItem('startValue');
-        if (sValue) {
-            props.setStartValue(+sValue);
-        }
-    }, [])
-
-    useEffect(() => {
-        const mValue = localStorage.getItem('maxValue');
-        if (mValue) {
-            props.setMaxValue(+mValue);
-        }
-    }, [])
-
-    useEffect(() => {
-            localStorage.setItem('maxValue', props.maxValue.toString());
-        },
-        [props.maxValue]);
-
-    useEffect(() => {
-            localStorage.setItem('startValue', props.startValue.toString());
-        },
-        [props.startValue]);
 
     useEffect(() => {
         props.maxValue <= props.startValue || props.maxValue < 0 || props.startValue < 0 ? props.setErrorValue('Error')
             : props.setErrorValue('');
     }, [
         props.maxValue, props.startValue,
-    ])
-
-    useEffect(() => {
-        const cValue = localStorage.getItem('count');
-        if (cValue) {
-            props.setCount(+cValue);
-            props.setActive('');
-
-
-            props.setErrorValue('');
-        }
-
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('count', props.count.toString());
-
-    }, [
-        props.count
     ])
 
     const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -77,7 +35,7 @@ const UserInputs = (props: UserInputsPropsType) => {
 
     const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setDisSet(false);
-        props.errorValue && props.setActive('enter value and press set');
+        props.errorValue &&  props.setActive('enter value and press set');
         props.setStartValue(+e.currentTarget.value);
     }
 
@@ -85,8 +43,9 @@ const UserInputs = (props: UserInputsPropsType) => {
         props.setActive('');
         setDisSet(true);
         props.setCount(props.startValue);
+        localStorage.setItem('maxValue', props.maxValue.toString());
+        localStorage.setItem('startValue', props.startValue.toString());
     }
-
 
     return (
         <div>

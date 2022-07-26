@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import UserInputs from "./Components/UserInputs";
 import Count from "./Components/Count";
@@ -11,7 +11,21 @@ function App() {
 
     const [errorValue, setErrorValue] = useState('Error');
 
-    const [active, setActive] = useState('enter value and press set');
+    const [active, setActive] = useState('');
+
+    useEffect(() => {
+        const sValue = localStorage.getItem('startValue');
+        const mValue = localStorage.getItem('maxValue');
+        const cValue = localStorage.getItem('count');
+
+        if (sValue && mValue && cValue) {
+            setStartValue(+sValue);
+            setMaxValue(+mValue);
+            setCount(+cValue);
+            setActive('');
+            setErrorValue('');
+        }
+    }, [])
 
     return (
         <div className="App">

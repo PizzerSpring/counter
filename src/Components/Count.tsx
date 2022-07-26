@@ -13,24 +13,28 @@ type CountPropsType = {
 
 const Count = (props: CountPropsType) => {
 
-    const isChecked = !!props.errorValue || +props.maxValue - props.count === 0 || !!props.active;
+    const isChecked = !!props.errorValue || props.maxValue === props.count || !!props.active;
 
     const IncrementCountHandler = (e: MouseEvent<HTMLButtonElement>) => {
+        localStorage.setItem('count', (props.count + 1).toString());
         props.setCount(props.count + 1);
     }
     const ResetCountHandler = () => {
         props.setCount(props.startValue);
     }
+
     return (
         <div>
             <div>
-                {props.active ?
-                    <div>{props.errorValue ? <div className={style.error}>Incorrect value!</div> :
-                        <div className={style.active}>{props.active}</div>}</div> :
-                    <div>{props.errorValue ? <div className={style.error}>Incorrect value!</div> :
-                        <div className={`${style.count} ${
-                            +props.maxValue - props.count === 0 ? style.inactiveCount : ''
-                        }`}>{props.count}</div>}</div>
+                {props.errorValue
+                    ? (<div className={style.error}>Incorrect value!</div>)
+                    :(<>
+                        {props.active ?  <div className={style.active}>{props.active}</div>
+                        : <div className={`${style.count} ${
+                                props.maxValue === props.count ? style.inactiveCount : ''
+                            }`}>{props.count}</div>
+                        }
+                    </>)
                 }
             </div>
             <Button
@@ -44,13 +48,13 @@ const Count = (props: CountPropsType) => {
                     classBut={`${style.button} ${style.buttonReset} ${style.buttonDis}`}
                     callBack={ResetCountHandler}
                     disabled={true}/>
-                 :
+                :
                 <Button
                     title={'Reset'}
                     classBut={`${style.button} ${style.buttonReset}`}
                     callBack={ResetCountHandler}
                     disabled={false}/>
-              }
+            }
         </div>
     );
 };
