@@ -49,3 +49,7 @@
 .title {
     margin-bottom: 30px;
 }
+
+.buttonDis {
+    opacity: 0.7;
+}

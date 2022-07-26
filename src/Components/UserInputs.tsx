@@ -70,14 +70,14 @@ const UserInputs = (props: UserInputsPropsType) => {
 
     const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setDisSet(false);
-        props.setActive('enter value and press set');
+        props.errorValue && props.setActive('enter value and press set');
         props.setMaxValue(+e.currentTarget.value);
     }
 
 
     const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setDisSet(false);
-        props.setActive('enter value and press set');
+        props.errorValue && props.setActive('enter value and press set');
         props.setStartValue(+e.currentTarget.value);
     }
 
@@ -107,7 +107,7 @@ const UserInputs = (props: UserInputsPropsType) => {
                 callBack={onChangeStartValueHandler}/>
             <Button
                 title={'Set'}
-                classBut={style.button}
+                classBut={`${style.button} ${disSet || !!props.errorValue ? style.buttonDis : ''}`}
                 callBack={setItemHandler}
                 disabled={!!props.errorValue || disSet}/>
         </div>

@@ -13,6 +13,8 @@ type CountPropsType = {
 
 const Count = (props: CountPropsType) => {
 
+    const isChecked = !!props.errorValue || +props.maxValue - props.count === 0 || !!props.active;
+
     const IncrementCountHandler = (e: MouseEvent<HTMLButtonElement>) => {
         props.setCount(props.count + 1);
     }
@@ -33,15 +35,13 @@ const Count = (props: CountPropsType) => {
             </div>
             <Button
                 title={'Inc'}
-                classBut={style.button}
+                classBut={`${style.button} ${isChecked ? style.buttonDis : ''}`}
                 callBack={IncrementCountHandler}
-                disabled={
-                    !!props.errorValue || +props.maxValue - props.count === 0 || !!props.active
-                }/>
+                disabled={isChecked}/>
             {props.errorValue || props.active ?
                 <Button
                     title={'Reset'}
-                    classBut={`${style.button} ${style.buttonReset}`}
+                    classBut={`${style.button} ${style.buttonReset} ${style.buttonDis}`}
                     callBack={ResetCountHandler}
                     disabled={true}/>
                  :
