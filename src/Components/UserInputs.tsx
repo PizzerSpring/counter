@@ -107,9 +107,9 @@ const UserInputs = (props: UserInputsPropsType) => {
                 callBack={onChangeStartValueHandler}/>
             <Button
                 title={'Set'}
-                classBut={`${style.button} ${disSet || !!props.errorValue ? style.buttonDis : ''}`}
+                classBut={`${style.button} ${disSet || !!props.errorValue || props.maxValue === 0 ? style.buttonDis : ''}`}
                 callBack={setItemHandler}
-                disabled={!!props.errorValue || disSet}/>
+                disabled={!!props.errorValue || props.maxValue === 0 || disSet}/>
         </div>
     );
 };
